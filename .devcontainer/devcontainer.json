@@ -1,0 +1,61 @@
+{
+    "name": "project-name",
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
+    "service": "devcontainer",
+    "runServices": [
+        "devcontainer"
+    ],
+    "shutdownAction": "stopCompose",
+    "workspaceFolder": "/app",
+    "initializeCommand": "echo DOCKER_GID=$(stat -c %g /var/run/docker.sock) > .devcontainer/.env",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "eamodio.gitlens", // IDE Git information
+                "davidanson.vscode-markdownlint",
+                "ms-azuretools.vscode-docker", // Docker integration and linting
+                "shardulm94.trailing-spaces", // Show trailing spaces
+                "Gruntfuggly.todo-tree", // Highlights TODO comments
+                "bierner.emojisense", // Emoji sense for markdown
+                "vscode-icons-team.vscode-icons", // Better file extension icons
+                "github.vscode-pull-request-github", // Github interaction
+                "redhat.vscode-yaml", // Kubernetes, Drone syntax highlighting
+                "IBM.output-colorizer" // Colorize your output/test logs
+                // "bajdzis.vscode-database", // Supports connections to mysql or postgres, over SSL, socked
+                // "zxh404.vscode-proto3", // Supports Proto syntax
+                // "jrebocho.vscode-random", // Generates random values
+                // "alefragnani.Bookmarks", // Manage bookmarks
+                // "quicktype.quicktype", // Paste JSON as code
+                // "spikespaz.vscode-smoothtype", // smooth cursor animation
+            ],
+            "settings": {
+                "files.eol": "\n",
+                "remote.extensionKind": {
+                    "ms-azuretools.vscode-docker": "workspace"
+                },
+                "editor.codeActionsOnSave": {
+                    "source.fixAll.eslint": true
+                },
+                "eslint.validate": [
+                    "javascript",
+                    "typescript"
+                ],
+                "editor.formatOnSave": true,
+                "[javascript]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode",
+                    "editor.formatOnSave": true
+                },
+                "[typescript]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode",
+                    "editor.formatOnSave": true
+                },
+                "prettier-eslint.eslintIntegration": true
+            }
+        }
+    }
+}

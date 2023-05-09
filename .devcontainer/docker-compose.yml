@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  devcontainer:
+    # container_name: project-name-dev-container
+    image: kai/node-devcontainer:16-bullseye-slim
+    build: .
+    env_file:
+      - .env
+    
+    user: node
+    group_add:
+      - "${DOCKER_GID}"
+    working_dir: /app
+    volumes:
+      - ..:/app
+      - ~/.aws:/home/node/.aws:z # Allow AWS CLI and other tools to read an AWS profile
+      - ~/.ssh:/home/node/.ssh:z # SSH directory for Linux, OSX
+      - ~/.gitconfig:/home/node/.gitconfig:z # Git config
+      # Zsh binding
+      - ~/.p10k.zsh:/home/node/.p10k.zsh:ro
+      - ~/.zshrc:/home/node/.zshrc:z
+      - ~/.zsh_history:/home/node/.zsh_history:z
+      # Docker binding
+      - ~/.docker:/home/node/.docker:z
+      - /var/run/docker.sock:/var/run/docker.sock:z
+    command: sleep infinity
